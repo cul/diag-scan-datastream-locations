@@ -2,8 +2,6 @@ import sys, os, sqlite3, csv
 
 conn = sqlite3.connect('file:db/inventory.db?mode=ro', uri=True)
 cursor = conn.cursor()
-cursor.execute('PRAGMA recursive_triggers = ON;')
-print('checksum,inv_root,path,count')
 with open('duplicates.csv', 'w', newline='') as csvfile:
 	writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 	writer.writerow(['checksum','inv_root','path','count','crc'])
